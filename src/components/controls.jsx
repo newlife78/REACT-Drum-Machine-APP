@@ -2,14 +2,6 @@ import React, { Component } from "react";
 import "../App.css";
 
 class Controls extends Component {
-  //handleVolume(adjustVolume) {
-  //  if (this.props.power) {
-  //    this.setState = {
-  //      volume: adjustVolume.target.value,
-  //    };
-  //  }
-  //}
-
   render() {
     const { onChangePower, onChangeMode, volume, volumeControl, display } =
       this.props;
@@ -64,28 +56,3 @@ class Controls extends Component {
 }
 
 export default Controls;
-
-//        <div className="slideContainer">
-//          <input
-//            type="range"
-//            min="0"
-//            max="100"
-//            value="1"
-//            id="myRange"
-//            onChange={this.handleVolume}
-//            className="slider"
-//          />
-//        </div>
-
-// Volume div:
-//        <div className="volume-container">
-//          <input
-//            type="range"
-//            id="vol-slider"
-//            min="0"
-//            max="100"
-//            step="1"
-//            value={volume}
-//            onChange={volumeControl}
-//          />
-//        </div>;
