@@ -3,9 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  /* for Safari */
   -moz-box-sizing: border-box;
-  /* for Firefox */
 }
 
 body {
@@ -154,7 +152,7 @@ body {
   /* ----- FOOTER ----- */
   footer {
     a {
-      display: inline-block; //necessary for '&:hover' to work
+      display: inline-block;
       padding: 20px;
       color: #eeebd9;
       font-size: 0.9rem;
@@ -176,7 +174,7 @@ body {
   width: 60px;
   height: 30px;
   border-radius: 15px;
-  position: relative; //'relative' necessary to use 'absolute' in 'label'
+  position: relative;
 }
 
 .switch-color-power,
@@ -291,17 +289,3 @@ input {
   border: 1px solid #000;
   cursor: pointer;
 }
-
-//Styling points of 'input':
-//BASE: input[type='range']
-//TRACK: input[type='range']::-webkit-slider-runnable-track {}
-//THUMB: input[type=range]::-webkit-slider-thumb {}
-//   TRACK + THUMB: input[type=range]::-moz-range-thumb {}
-//   TRACK + THUMB: input[type=range]::-ms-thumb {}
-//BASE-FOCUS: input[type=range]:focus {}
-//TRACK-FOCUS: input[type=range]:focus::-webkit-slider-runnable-track {}
-//THUMB-FOCUS: input[type=range]:focus::-webkit-slider-thumb {}
-
-//Icons:
-//Volume down: '<i class="fas fa-volume-down"></i>'
-// Volume up: '<i class="fas fa-volume-up"></i>'
