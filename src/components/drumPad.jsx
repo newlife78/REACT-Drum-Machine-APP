@@ -28,17 +28,14 @@ class DrumPad extends Component {
     setTimeout(() => this.setState({ padState: inactive }), 300);
   }
 
-  // Play audio method:
+  // Play audio & update display methods:
   playAudio() {
     const audio = document.getElementById(this.props.keyTrigger);
-    audio.currentTime = 0; // delay between press the button or keypad and the audio play
+    audio.currentTime = 0;
     if (this.props.powerOn) {
-      // necessary 'if statment' to assure that an error of '(in promise) DOMException' does not occur when 'adio.play()' receives an input of empty 'audio.url'
       audio.play();
     }
-    //audio.play();
     this.padActive();
-    //update display:
     this.props.updateDisplay(this.props.audioId.replace(/_|-/g, " "));
   }
 
@@ -47,9 +44,6 @@ class DrumPad extends Component {
     document.addEventListener("keydown", this.handleKeyPress);
   }
 
-  // Necessary method to clean up listeners, tiers, ... from the DOM, before teh component is remove from the DOM.
-  // otherwise we could have memory leaks:
-  // See: https://learn.co/lessons/react-component-mounting-and-unmounting
   componentWillUnmount() {
     document.removeEventListener("keydown", this.handleKeyPress);
   }
@@ -66,7 +60,6 @@ class DrumPad extends Component {
 
     return (
       <button
-        //className="drum-pad btn m-1 btn-secondary"
         className="drum-pad"
         id={audioId}
         type="btn"
@@ -86,14 +79,3 @@ class DrumPad extends Component {
 }
 
 export default DrumPad;
-
-// FINAL NOTES:
-//Another Process - subtitute of 'componentDidMount' and 'handleKeyPress':
-//Press key method and lifecycle hooks ('componentDidMount'):
-//componentDidMount() {
-//  document.addEventListener("keydown", (keyPress) => {
-//    if (keyPress.key.toUpperCase() === this.props.keyTrigger) {
-//      this.playAudio();
-//    }
-//  });
-//}
