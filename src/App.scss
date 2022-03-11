@@ -1,0 +1,307 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  /* for Safari */
+  -moz-box-sizing: border-box;
+  /* for Firefox */
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* -------------------------------------------------------- */
+/* Mixins & Media Queries */
+@mixin phoneSize {
+  @media (max-width: 640px) {
+    @content;
+  }
+}
+
+//@mixin tabletSize {
+//  @media (min-width: 641px) and (max-width: 1023px) {
+//    @content;
+//  }
+//}
+
+//@mixin desktopSize {
+//  @media (min-width: 1024px) {
+//    @content;
+//  }
+//}
+
+/* -------------------------------------------------------- */
+/* App component */
+#container-app {
+  background-color: #7190a8;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* ----- TITLE ----- */
+  #main-title {
+    font-size: 2.4rem;
+    font-weight: 400;
+    padding: 25px;
+    @include phoneSize {
+      font-size: 2rem;
+    }
+  }
+  /* ----- DRUM-MACHINE ----- */
+  #drum-machine {
+    background-color: #b8d1e5;
+    width: 650px;
+    padding: 50px;
+    border: 3px solid #517089;
+    display: flex;
+    justify-content: center;
+    @include phoneSize {
+      width: 500px;
+      padding: 15px;
+    }
+    /* ----- PAD ----- */
+    #container-pad {
+      display: grid;
+      grid-template-columns: 90px 90px 90px;
+      grid-template-rows: 90px 90px 90px;
+      grid-gap: 5px 5px;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+      @include phoneSize {
+        grid-template-columns: 70px 70px 70px;
+        grid-template-rows: 70px 70px 70px;
+        grid-gap: 3px 3px;
+        padding: 15px;
+      }
+      /* ----- DRUM-PAD ----- */
+      .drum-pad {
+        height: 80px;
+        width: 80px;
+        //margin: 5px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.5rem;
+        color: #fff;
+        text-align: center;
+        @include phoneSize {
+          height: 60px;
+          width: 60px;
+          font-size: 1.2rem;
+        }
+      }
+    }
+    /* ----- CONTROLS CONTAINER ----- */
+    #container-controls {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      padding: 25px;
+      @include phoneSize {
+        padding: 15px;
+      }
+      /* ----- SUBCONTROLS CONTAINER ----- */
+      #container-subcontrols {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        p {
+          font-size: 1.5rem;
+          font-weight: 400;
+          @include phoneSize() {
+            font-size: 1.15rem;
+          }
+        }
+        /* ----- POWER & MODE CONTAINER ----- */
+        #power-control,
+        #mode-control {
+          padding: 0 10px;
+        }
+      }
+      /* ----- SWITCH POWER & MODE ----- */
+      /* See below! */
+      /* ----- DISPLAY ----- */
+      #display {
+        background-color: #000;
+        border: 2px solid #7190a8;
+        //border: 2px solid #ffa600;
+        width: 150px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 1.15rem;
+        font-weight: 400;
+        @include phoneSize {
+          width: 125px;
+          height: 40px;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+  /* ----- FOOTER ----- */
+  footer {
+    a {
+      display: inline-block; //necessary for '&:hover' to work
+      padding: 20px;
+      color: #eeebd9;
+      font-size: 0.9rem;
+      font-style: italic;
+      text-decoration: none;
+      transition: transform 0.5s ease-in-out;
+      &:hover {
+        color: #b8d1e5;
+        transform: translateY(0.5rem);
+      }
+    }
+  }
+}
+
+/* -------------------------------------------------------- */
+/* Switch components */
+.switch-container {
+  background-color: silver;
+  width: 60px;
+  height: 30px;
+  border-radius: 15px;
+  position: relative; //'relative' necessary to use 'absolute' in 'label'
+}
+
+.switch-color-power,
+.switch-color-mode {
+  width: 56px;
+  height: 26px;
+  border-radius: 13px;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition-property: background-color;
+  transition-duration: 0.4s;
+}
+
+.switch-color-power {
+  background-color: silver;
+}
+
+.switch-color-mode {
+  background-color: #f5624f;
+}
+
+label {
+  background-color: #fff;
+  width: 26px;
+  height: 26px;
+  border-radius: 13px;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+i::before {
+  content: "OFF";
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-top: 0.35rem;
+  margin-left: 1.9rem;
+  position: absolute;
+  color: #585858;
+}
+
+#switch-power:checked ~ i::before {
+  content: "ON";
+  color: #fff;
+  margin-top: 0.35rem;
+  margin-left: 0.5rem;
+}
+
+#switch-power:checked ~ label,
+#switch-mode:checked ~ label {
+  transform: translatex(30px);
+}
+
+#switch-power:checked ~ .switch-color-power {
+  background-color: #58d34b;
+}
+
+#switch-mode:checked ~ .switch-color-mode {
+  background-color: #ffa600;
+}
+
+#switch-power ~ label,
+#switch-power ~ .switch-color,
+#switch-mode ~ label,
+#switch-mode ~ .switch-color {
+  transition: 0.5s;
+}
+
+input {
+  display: none;
+}
+/* -------------------------------------------------------- */
+
+/* Volume components */
+.volume-container {
+  background-color: #2a2a2a;
+  width: 150px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+
+#vol-icon {
+  width: 22px;
+  font-size: 1.1rem;
+  padding: 4px;
+  color: #fff;
+}
+
+#vol-slider {
+  //same has 'input[type='range']'
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  width: 164px;
+  height: 4px;
+  background: linear-gradient(90deg, green, yellow, red, #fff);
+}
+
+#vol-slider::-webkit-slider-thumb {
+  //input[type=range]::-webkit-slider-thumb
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #104e92;
+  width: 12px;
+  height: 33px;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+//Styling points of 'input':
+//BASE: input[type='range']
+//TRACK: input[type='range']::-webkit-slider-runnable-track {}
+//THUMB: input[type=range]::-webkit-slider-thumb {}
+//   TRACK + THUMB: input[type=range]::-moz-range-thumb {}
+//   TRACK + THUMB: input[type=range]::-ms-thumb {}
+//BASE-FOCUS: input[type=range]:focus {}
+//TRACK-FOCUS: input[type=range]:focus::-webkit-slider-runnable-track {}
+//THUMB-FOCUS: input[type=range]:focus::-webkit-slider-thumb {}
+
+//Icons:
+//Volume down: '<i class="fas fa-volume-down"></i>'
+// Volume up: '<i class="fas fa-volume-up"></i>'

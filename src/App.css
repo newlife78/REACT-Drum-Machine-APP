@@ -1,0 +1,358 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  /* for Safari */
+  -moz-box-sizing: border-box;
+  /* for Firefox */
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* -------------------------------------------------------- */
+/* Mixins & Media Queries */
+/* -------------------------------------------------------- */
+/* App component */
+#container-app {
+  background-color: #7190a8;
+  color: #fff;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  /* ----- TITLE ----- */
+  /* ----- DRUM-MACHINE ----- */
+  /* ----- FOOTER ----- */
+}
+
+#container-app #main-title {
+  font-size: 2.4rem;
+  font-weight: 400;
+  padding: 25px;
+}
+
+@media (max-width: 640px) {
+  #container-app #main-title {
+    font-size: 2rem;
+  }
+}
+
+#container-app #drum-machine {
+  background-color: #b8d1e5;
+  width: 650px;
+  padding: 50px;
+  border: 3px solid #517089;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  /* ----- PAD ----- */
+  /* ----- CONTROLS CONTAINER ----- */
+}
+
+@media (max-width: 640px) {
+  #container-app #drum-machine {
+    width: 500px;
+    padding: 15px;
+  }
+}
+
+#container-app #drum-machine #container-pad {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 90px 90px 90px;
+      grid-template-columns: 90px 90px 90px;
+  -ms-grid-rows: 90px 90px 90px;
+      grid-template-rows: 90px 90px 90px;
+  grid-gap: 5px 5px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 25px;
+  /* ----- DRUM-PAD ----- */
+}
+
+@media (max-width: 640px) {
+  #container-app #drum-machine #container-pad {
+    -ms-grid-columns: 70px 70px 70px;
+        grid-template-columns: 70px 70px 70px;
+    -ms-grid-rows: 70px 70px 70px;
+        grid-template-rows: 70px 70px 70px;
+    grid-gap: 3px 3px;
+    padding: 15px;
+  }
+}
+
+#container-app #drum-machine #container-pad .drum-pad {
+  height: 80px;
+  width: 80px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  color: #fff;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  #container-app #drum-machine #container-pad .drum-pad {
+    height: 60px;
+    width: 60px;
+    font-size: 1.2rem;
+  }
+}
+
+#container-app #drum-machine #container-controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 25px;
+  /* ----- SUBCONTROLS CONTAINER ----- */
+  /* ----- SWITCH POWER & MODE ----- */
+  /* See below! */
+  /* ----- DISPLAY ----- */
+}
+
+@media (max-width: 640px) {
+  #container-app #drum-machine #container-controls {
+    padding: 15px;
+  }
+}
+
+#container-app #drum-machine #container-controls #container-subcontrols {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  /* ----- POWER & MODE CONTAINER ----- */
+}
+
+#container-app #drum-machine #container-controls #container-subcontrols p {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+@media (max-width: 640px) {
+  #container-app #drum-machine #container-controls #container-subcontrols p {
+    font-size: 1.15rem;
+  }
+}
+
+#container-app #drum-machine #container-controls #container-subcontrols #power-control,
+#container-app #drum-machine #container-controls #container-subcontrols #mode-control {
+  padding: 0 10px;
+}
+
+#container-app #drum-machine #container-controls #display {
+  background-color: #000;
+  border: 2px solid #7190a8;
+  width: 150px;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 400;
+}
+
+@media (max-width: 640px) {
+  #container-app #drum-machine #container-controls #display {
+    width: 125px;
+    height: 40px;
+    font-size: 1rem;
+  }
+}
+
+#container-app footer a {
+  display: inline-block;
+  padding: 20px;
+  color: #eeebd9;
+  font-size: 0.9rem;
+  font-style: italic;
+  text-decoration: none;
+  -webkit-transition: -webkit-transform 0.5s ease-in-out;
+  transition: -webkit-transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+}
+
+#container-app footer a:hover {
+  color: #b8d1e5;
+  -webkit-transform: translateY(0.5rem);
+          transform: translateY(0.5rem);
+}
+
+/* -------------------------------------------------------- */
+/* Switch components */
+.switch-container {
+  background-color: silver;
+  width: 60px;
+  height: 30px;
+  border-radius: 15px;
+  position: relative;
+}
+
+.switch-color-power,
+.switch-color-mode {
+  width: 56px;
+  height: 26px;
+  border-radius: 13px;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 0.4s;
+          transition-duration: 0.4s;
+}
+
+.switch-color-power {
+  background-color: silver;
+}
+
+.switch-color-mode {
+  background-color: #f5624f;
+}
+
+label {
+  background-color: #fff;
+  width: 26px;
+  height: 26px;
+  border-radius: 13px;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+i::before {
+  content: "OFF";
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-top: 0.35rem;
+  margin-left: 1.9rem;
+  position: absolute;
+  color: #585858;
+}
+
+#switch-power:checked ~ i::before {
+  content: "ON";
+  color: #fff;
+  margin-top: 0.35rem;
+  margin-left: 0.5rem;
+}
+
+#switch-power:checked ~ label,
+#switch-mode:checked ~ label {
+  -webkit-transform: translatex(30px);
+          transform: translatex(30px);
+}
+
+#switch-power:checked ~ .switch-color-power {
+  background-color: #58d34b;
+}
+
+#switch-mode:checked ~ .switch-color-mode {
+  background-color: #ffa600;
+}
+
+#switch-power ~ label,
+#switch-power ~ .switch-color,
+#switch-mode ~ label,
+#switch-mode ~ .switch-color {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+input {
+  display: none;
+}
+
+/* -------------------------------------------------------- */
+/* Volume components */
+.volume-container {
+  background-color: #2a2a2a;
+  width: 150px;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 4px;
+}
+
+#vol-icon {
+  width: 22px;
+  font-size: 1.1rem;
+  padding: 4px;
+  color: #fff;
+}
+
+#vol-slider {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  outline: none;
+  width: 164px;
+  height: 4px;
+  background: -webkit-gradient(linear, left top, right top, from(green), color-stop(yellow), color-stop(red), to(#fff));
+  background: linear-gradient(90deg, green, yellow, red, #fff);
+}
+
+#vol-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #104e92;
+  width: 12px;
+  height: 33px;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+/*# sourceMappingURL=App.css.map */
